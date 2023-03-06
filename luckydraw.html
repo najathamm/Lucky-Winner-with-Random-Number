@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lucky Winner with Random Number</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	
+	<script>
+
+		var x = 0;
+
+		function winner()
+		{
+			if (x < 1)
+			{
+				students = ["Ahamed","John","Ravi","David","Alax","Doe","Kevin","Roy","Peter","Mark"];
+
+				imagenames = ["0.jpeg","1.jpeg","2.jpg","3.jpg","4.jpeg","5.jpg","6.jpeg","7.jpeg","8.jpeg","9.jpg"];
+
+				var winner = Math.floor(Math.random() * 10);
+
+				document.getElementById("winnername").innerHTML = "The winner is " + students[winner];
+
+				document.getElementById("winnerphoto").src = "images/" + imagenames[winner];
+
+				document.getElementById("wheel").src = "images/winning.gif";
+			}
+			else
+			{
+				alert("You're Late. Winner is Already Selected")
+			}
+
+			x++;
+		}
+
+		function Reset()
+		{
+			//Reset the Wheel
+			document.getElementById("wheel").src = "images/wheel.gif";
+
+			//Reset the Winner Text
+			document.getElementById("winnername").innerHTML = "";
+
+			//Reset the Image
+			document.getElementById("winnerphoto").src = "";
+
+			//Reset x to 0
+			x = 0;
+		}
+	</script>
+
+</head>
+<body>
+
+<div class="container">
+	<div class="row" style="margin-top:50px">
+		<div class="col-md-6 text-center">
+			<h2>Lucky Winner Drawing</h2>
+
+			<img id="wheel" width="300px" src="images/wheel.gif" class="img img-thumbnail" onclick="winner()" />
+
+			<p>
+			<a class="btn btn-lg btn-danger">Click The Wheel</a>
+			</p>
+
+			<p>
+			<a class="btn btn-lg btn-success" onclick="Reset()">Reset</a>
+			</p>
+
+			
+		</div>
+		<div class="col-md-6">
+			<h3 id="winnername" class="alert alert-danger text-center"> </h3>
+			<img id="winnerphoto" src="" class="img img-thumbnail">
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
